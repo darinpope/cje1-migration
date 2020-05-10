@@ -27,7 +27,7 @@ nodeGroups:
         efs: true
   - name: cloudbees-core-regular
     instanceType: m5.large
-    minSize: 0
+    minSize: 1
     maxSize: 3
     privateNetworking: true
     labels: {
