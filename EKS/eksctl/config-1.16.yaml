@@ -25,9 +25,6 @@ nodeGroups:
       withAddonPolicies:
         autoScaler: true
         efs: true
-    ssh:
-      allow: false
-      publicKeyName: REPLACEME-key
   - name: cloudbees-core-regular
     instanceType: m5.large
     minSize: 0
@@ -39,9 +36,6 @@ nodeGroups:
     iam:
       withAddonPolicies:
         autoScaler: true
-    ssh:
-      allow: false
-      publicKeyName: REPLACEME-key
   - name: cloudbees-core-spot
     minSize: 0
     maxSize: 9
@@ -57,9 +51,6 @@ nodeGroups:
     iam:
       withAddonPolicies:
         autoScaler: true
-    ssh:
-      allow: false
-      publicKeyName: REPLACEME-key
 
 vpc:
   id: "REPLACEME-vpcid"
