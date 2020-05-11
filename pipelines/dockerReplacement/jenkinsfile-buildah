@@ -1,12 +1,3 @@
-def props = [:]
-
-node {
-  stage('Read parameters from version.properties'){
-    checkout scm
-    props = readProperties(file: 'version.properties')
-  }
-}
-
 pipeline {
   agent {
     kubernetes {
@@ -43,19 +34,8 @@ spec:
       steps {
         container("buildah") {
           sh """
-            buildah bud -t ${props["image"]}:${props["baseTag"]} .
-          """
-        }
-      }
-    }
-    stage("Extra Tag") {
-      when {
-        expression { return null != props["extraTag"] }
-      }
-      steps {
-        container("buildah") {
-          sh """
-            buildah tag ${props["image"]}:${props["baseTag"]} ${props["image"]}:${props["extraTag"]}
+            git 'https://github.com/cb-jeffduska/simple-docker-example.git'
+            buildah bud -t hello-kaniko:${env.COMMIT_ID} .
           """
         }
       }

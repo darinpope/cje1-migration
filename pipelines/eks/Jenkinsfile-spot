@@ -1,0 +1,54 @@
+pipeline {
+    options {
+        buildDiscarder(logRotator(numToKeepStr: "5"))
+    }
+    agent {
+        kubernetes {
+        label "spot-pod"
+        yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+    - name: maven
+      image: maven:3.6.3-jdk-8
+      command:
+      - cat
+      tty: true
+    - name: aws-cli
+      image: infrastructureascode/aws-cli:1.16.301
+      command:
+      - cat
+      tty: true
+  nodeSelector:
+    partition: spot-agents
+  tolerations:
+    - key: partition
+      operator: Equal
+      value: spot-agents
+      effect: NoSchedule
+"""
+        }
+    }
+    stages {
+        stage("Build and Test with Maven") {
+            steps {
+                container("maven") {
+                    sh "mvn --version"
+                }
+            }
+        }
+        stage("Deploy") {
+            steps {
+                container("aws-cli") {
+                    sh "aws --version"
+                }
+            }
+        }
+        stage("sleep") {
+          steps {
+            sleep 180
+          }
+        }
+    }
+}
