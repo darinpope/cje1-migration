@@ -1,0 +1,4 @@
+Jenkins.instance.getAllItems().each { j ->
+if (j instanceof com.cloudbees.hudson.plugins.folder.Folder) { return }
+j.setDisabled(true)
+}
