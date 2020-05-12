@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#VARIABLES
+
+# Kubernetes namespace for cjoc
+namespace=cloudbees-core
+
+#Name of the CJOC statefulset
+cjocStatefulsetName=cjoc
+
+#Container with version if required, to use for the rescue pod
+rescueContainerImage=containerregistry-na.jpmchase.net/container-release/jpmcbase/lrh7-targz@sha256:4f46b7a9bc8a774f1dc5958cb7a577b149dec69e06fb686699fb83629a4e0c3b
+
+#Download the backup artifact
+s3Bucket=core-backups
+backupFilePath=cjoc/backup-cjocbackup-1.tar.gz
