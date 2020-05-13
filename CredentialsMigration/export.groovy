@@ -55,5 +55,11 @@ def stream = new XStream2()
 stream.registerConverter(converter)
 
 // Marshal the list of credentials into XML
-def xml = stream.toXML(credentials)
-println Base64.encode(xml.bytes)
+def encoded = []
+def sections = credentials.collate(25)
+for (section in sections) {
+    def xml = Base64.encode(stream.toXML(section).bytes)
+    encoded.add("\"${xml}\"")
+}
+
+println encoded.toString()
