@@ -4,7 +4,7 @@ kind: ClusterConfig
 metadata:
   name: REPLACEME-eks-cluster
   region: us-east-1
-  version: "1.15"
+  version: "1.16"
 
 status:
   endpoint: private
@@ -54,6 +54,9 @@ nodeGroups:
 
 vpc:
   id: "REPLACEME-vpcid"
+  clusterEndpoints:
+    publicAccess:  true
+    privateAccess: false
   subnets:
     private:
       us-east-1a:
