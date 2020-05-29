@@ -54,7 +54,6 @@ nodeGroups:
 
 vpc:
   id: "REPLACEME-vpcid"
-  cidr: "10.0.0.0/16"
   subnets:
     private:
       us-east-1a:
