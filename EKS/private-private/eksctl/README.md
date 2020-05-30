@@ -19,4 +19,7 @@ https://eksctl.io/usage/vpc-networking/#managing-access-to-the-kubernetes-api-se
 
 https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
 
+# Test manually scale up and down of nodegroup after changing to private
 
+* `eksctl scale nodegroup --cluster=[cluster-id] --nodes=2 cloudbees-core-regular`
+* `eksctl scale nodegroup --cluster=[cluster-id] --nodes=1 cloudbees-core-regular`
