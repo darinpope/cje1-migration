@@ -6,8 +6,8 @@ metadata:
   region: us-east-1
   version: "1.16"
   tags: {
-    cb-name: foobar:cb
-    cb-chocolate: pretzel:dark
+    cb-name: "foobar:cb",
+    cb-chocolate: "pretzel:dark"
   }
 
 status:
@@ -28,8 +28,8 @@ nodeGroups:
       partition: masters:NoSchedule
     }
     tags: {
-      cb-name: foobar:cb
-      cb-chocolate: pretzel:dark
+      cb-name: "foobar:cb",
+      cb-chocolate: "pretzel:dark"
     }
     iam:
       withAddonPolicies:
@@ -46,8 +46,8 @@ nodeGroups:
       partition: regular-agents
     }
     tags: {
-      cb-name: foobar:cb
-      cb-chocolate: pretzel:dark
+      cb-name: "foobar:cb",
+      cb-chocolate: "pretzel:dark"
     }
     iam:
       withAddonPolicies:
