@@ -5,6 +5,10 @@ metadata:
   name: REPLACEME-eks-cluster
   region: us-east-1
   version: "1.16"
+  tags: {
+    cb-name: foobar:cb
+    cb-chocolate: pretzel:dark
+  }
 
 status:
   endpoint: private
@@ -22,6 +26,10 @@ nodeGroups:
     }
     taints: {
       partition: masters:NoSchedule
+    }
+    tags: {
+      cb-name: foobar:cb
+      cb-chocolate: pretzel:dark
     }
     iam:
       withAddonPolicies:
