@@ -16,7 +16,7 @@ status:
 nodeGroups:
   - name: cloudbees-core-masters
     kubeletExtraConfig:
-      clusterDNS: ["169.254.169.253","8.8.8.8","8.8.4.4"]
+      clusterDNS: ["172.20.0.10","169.254.169.253","8.8.8.8","8.8.4.4"]
     instanceType: r5.xlarge
     minSize: 1
     maxSize: 3
@@ -37,7 +37,7 @@ nodeGroups:
         efs: true
   - name: cloudbees-core-regular
     kubeletExtraConfig:
-      clusterDNS: ["169.254.169.253","8.8.8.8","8.8.4.4"]
+      clusterDNS: ["172.20.0.10","169.254.169.253","8.8.8.8","8.8.4.4"]
     instanceType: m5.large
     minSize: 1
     maxSize: 3

@@ -29,6 +29,8 @@ With eksctl, you can't initially create a cluster with the endpoint private beca
 * `kubectl get nodes`
   * this should time out
 * Add the bastion IP to the inbound "...cluster-ControlPlaneSecurityGroup..." security group with HTTPS/443. There should already be two other inbound HTTPS/443 rules in place. This will be the third one.
+* `kubectl get nodes`
+  * this should return the nodes
 
 "You must ensure that your Amazon EKS control plane security group contains rules to allow ingress traffic on port 443 from your bastion host."
 
