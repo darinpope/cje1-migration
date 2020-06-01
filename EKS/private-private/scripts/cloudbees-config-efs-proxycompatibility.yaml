@@ -3,7 +3,7 @@ OperationsCenter:
     cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
   CSRF: 
     ProxyCompatibility: true
-  HostName: cbeks.kmedesign.com
+  HostName: <YOUR_CLUSTER_NAME>
   Ingress: 
     tls: 
       Enable: false
