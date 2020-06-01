@@ -1,0 +1,27 @@
+OperationsCenter: 
+  Annotations: 
+    cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
+  CSRF: 
+    ProxyCompatibility: true
+  HostName: <YOUR_CLUSTER_NAME>
+  Ingress: 
+    tls: 
+      Enable: false
+      Host: jenkins.cluster.local
+      SecretName: core-example-com-tls
+  JavaOpts: "-Dcom.cloudbees.masterprovisioning.kubernetes.KubernetesMasterProvisioning.storageClassName=aws-efs -Dcb.BeekeeperProp.noFullUpgrade=true"
+  NodeSelector: 
+    partition: masters
+  ServiceType: ClusterIP
+  Tolerations: 
+    - 
+      effect: NoSchedule
+      key: partition
+      operator: Equal
+      value: masters
+Persistence: 
+  StorageClass: aws-efs
+nginx-ingress: 
+  Enabled: false
+Master: 
+  JavaOpts: "-Dcom.cloudbees.masterprovisioning.kubernetes.KubernetesMasterProvisioning.storageClassName=aws-efs -Dcb.BeekeeperProp.noFullUpgrade=true"

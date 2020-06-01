@@ -4,13 +4,15 @@ kind: ClusterConfig
 metadata:
   name: REPLACEME-eks-cluster
   region: us-east-1
-  version: "1.15"
+  version: "1.16"
 
 status:
   endpoint: private
 
 nodeGroups:
   - name: cloudbees-core-masters
+    kubeletExtraConfig:
+      clusterDNS: ["8.8.8.8","8.8.4.4"]
     instanceType: r5.xlarge
     minSize: 1
     maxSize: 3
@@ -26,6 +28,8 @@ nodeGroups:
         autoScaler: true
         efs: true
   - name: cloudbees-core-regular
+    kubeletExtraConfig:
+      clusterDNS: ["8.8.8.8","8.8.4.4"]
     instanceType: m5.large
     minSize: 1
     maxSize: 3
@@ -37,6 +41,8 @@ nodeGroups:
       withAddonPolicies:
         autoScaler: true
   - name: cloudbees-core-spot
+    kubeletExtraConfig:
+      clusterDNS: ["8.8.8.8","8.8.4.4"]
     minSize: 1
     maxSize: 9
     instancesDistribution:
@@ -54,6 +60,9 @@ nodeGroups:
 
 vpc:
   id: "REPLACEME-vpcid"
+  clusterEndpoints:
+    publicAccess:  true
+    privateAccess: false
   subnets:
     private:
       us-east-1a:

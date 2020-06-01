@@ -6,7 +6,7 @@ kubectl apply -n ingress-nginx -f https://raw.githubusercontent.com/kubernetes/i
 kubectl annotate -n ingress-nginx -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.23.0/deploy/provider/aws/service-l4.yaml service.beta.kubernetes.io/aws-load-balancer-internal="0.0.0.0/0"
 kubectl annotate -n ingress-nginx -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.23.0/deploy/provider/aws/service-l4.yaml --overwrite=true service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout="3600"
 kubectl apply -n ingress-nginx -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.23.0/deploy/provider/aws/patch-configmap-l4.yaml
-kubectl patch -n ingress-nginx service ingress-nginx -p '{"spec":{"externalTrafficPolicy":"Local"}}'
+kubectl patch -n ingress-nginx service ingress-nginx -p '{"spec":{"externalTrafficPolicy":"Cluster"}}'
 echo "************************************"
 echo "sleeping for 90 seconds"
 echo "************************************"
