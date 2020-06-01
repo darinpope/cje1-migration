@@ -14,8 +14,7 @@ OperationsCenter:
     partition: masters
   ServiceType: ClusterIP
   Tolerations: 
-    - 
-      effect: NoSchedule
+    - effect: NoSchedule
       key: partition
       operator: Equal
       value: masters
