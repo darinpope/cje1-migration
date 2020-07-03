@@ -1,0 +1,24 @@
+perationsCenter: 
+  Annotations: 
+    cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
+  CSRF: 
+    ProxyCompatibility: true
+  HostName: <YOUR_CLUSTER_NAME>
+  Ingress: 
+    tls: 
+      Enable: false
+      Host: jenkins.cluster.local
+      SecretName: core-example-com-tls
+  JavaOpts: "-Dcb.BeekeeperProp.noFullUpgrade=true"
+  NodeSelector: 
+    partition: masters
+  ServiceType: ClusterIP
+  Tolerations: 
+    - effect: NoSchedule
+      key: partition
+      operator: Equal
+      value: masters
+nginx-ingress: 
+  Enabled: false
+Master: 
+  JavaOpts: "-Dcb.BeekeeperProp.noFullUpgrade=true"
